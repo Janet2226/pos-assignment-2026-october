@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Janet</title>
+    <script src="./pos.js?v=1.0.2" defer></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        .main-pos-div {
+            width: 420px;
+            max-width: 90%;
+            margin: 40px auto;
+            padding: 24px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .title {
+            margin: 0 0 20px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .errors {
+            display: none;
+            margin-bottom: 16px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: #ffeaea;
+            border: 1px solid #f0b4b4;
+            color: #7c2d2d;
+            font-size: 14px;
+        }
+
+        .errors.visible {
+            display: block;
+        }
+
+        .main-pos-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fafafa;
+            font-size: 14px;
+        }
+
+        .main-pos-form button,
+        .confirm-sale {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            background: #2d7ff9;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .confirm {
+            min-height: 40px;
+            display: flex;
+            justify-content: center;
+            margin: 16px 0;
+        }
+
+        .stock-div {
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 16px;
+        }
+
+        .stock-div h3 {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+
+        .stock-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 8px;
+        }
+
+        .stock-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 8px 10px;
+            border: 1px solid #ececec;
+            border-radius: 8px;
+            background: #fafafa;
+            font-size: 14px;
+        }
+
+        .stock-list span:first-child {
+            text-transform: capitalize;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-pos-div">
+        <h1 class="title">POS Register</h1>
+
+        <div class="errors" aria-live="polite"></div>
+        <div class="confirm"></div>
+
+        <form class="main-pos-form">
+            <div class="field">
+                <label for="serial-input">Item code</label>
+                <input type="text" name="serial" id="serial-input" placeholder="e.g. milk" autocomplete="off">
+            </div>
+
+            <div class="field">
+                <label for="quantity-input">Quantity</label>
+                <input type="number" name="quantity" id="quantity-input" min="1" step="1" placeholder="Enter quantity">
+            </div>
+
+            <button type="submit">Check item</button>
+        </form>
+
+        <div class="stock-div"></div>
+    </div>
+</body>
+</html>
